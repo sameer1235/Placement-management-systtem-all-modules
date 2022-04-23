@@ -1,0 +1,51 @@
+
+create table  admin(
+A_id int Primary key,
+name varchar(45),
+passwords varchar(45));
+
+create table  user(
+u_id int Primary key,
+name varchar(45),
+Types varchar(45),
+passwords varchar(45),
+A_id int,
+foreign key (A_id) references admin(A_id),
+c_id int,
+foreign key (c_id) references college(c_id));
+
+
+create table  college(
+c_id int Primary key,
+collegeAdmin varchar(45),
+collegeName varchar(45),
+location varchar(45));
+
+create table  student(
+Student_id int Primary key,
+name varchar(45),
+roll int,
+qualification varchar(45),
+course varchar(45),
+year int,
+hallTicketNo int,
+c_id int,
+foreign key (c_id) references college(c_id),
+certificat_id int,
+foreign key (certificat_id) references certificate(certificat_id));
+
+create table certificate(
+certificat_id int Primary key,
+year int,
+c_id int,
+foreign key (c_id) references college(c_id));
+
+
+create table  placement(
+p_id int Primary key,
+s_name varchar(45),
+date varchar(45),
+qualification varchar(45),
+Year int,
+c_id int,
+foreign key (c_id) references college(c_id));
